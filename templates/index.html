@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>email</title>
+    <style>
+
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+       #bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;  
+            z-index: -1;
+            }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            color: white;
+            text-align: center;
+            top: 30%;
+            font-size: 24px;
+            top: 20%;
+        }
+
+         body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+
+      textarea {
+        width: 500px;
+        height: 200px;
+        padding: 15px;
+        font-size: 16px;
+        border: none;
+        border-radius: 15px;
+        resize: none;
+        outline: none;
+        box-shadow: 0 0 20px rgba(138, 43, 226, 0.6);
+        background: rgba(0, 0, 0, 0.3); 
+        color: #fff;
+        backdrop-filter: blur(6px);
+        }
+
+        h1{
+            color: rgb(174, 160, 151);
+            font-family: 'Segoe Script', cursive;
+        }
+        textarea {
+            transition: all 0.3s ease-in-out;
+            }
+
+            textarea:focus {
+                box-shadow: 0 0 29px rgba(138, 43, 226, 0.9)
+          
+            }
+
+           button {
+                    margin-top: 10px;
+                    background: transparent;
+                    border: none;
+                    color: #ffefba;
+                    font-size: 25px;
+                    font-family: 'Segoe Script', cursive;
+                    cursor: pointer;
+                    box-shadow: none;
+                    transition: all 0.3s ease-in-out;
+                    text-shadow: 0 0 10px #ffefba, 0 0 20px #ffefba;
+                    backdrop-filter: none;
+                }
+                button:hover {
+                        background: rgba(0, 0, 0, 0.3);
+                         box-shadow: 0 0 30px rgba(138, 43, 226, 0.9);
+                        transform: scale(1.05);  
+                }
+                    h2 {
+                color: #ffefba;
+                font-family: 'Segoe Script', cursive;
+                margin-top: 20px;
+            }
+        h4{
+            color: #ffefba;
+            font-family: 'Segoe Script', cursive;
+             margin-top: 5px;
+
+        }
+                
+    </style>
+</head>
+<body>
+
+
+    <<video autoplay muted loop id="bg-video">
+    <source src="{{ url_for('static', filename='video.mp4') }}" type="video/mp4">
+    Your browser does not support HTML5 video.
+</video>
+        <center>
+            <h1>Test the Spammyness of your Emails</h1>
+        </center>
+        
+<center>
+        
+    </center>
+    <center>
+    <form id="form_spam" action="\predict" method="post">
+        <textarea name="email" rows="10" cols="60" placeholder="Enter email text here..."></textarea><br><br>
+        <button type="submit">Submit</button>
+    </form>
+        {% if prediction is defined %}
+        <h2 >Prediction: {{ prediction }}</h2>
+        {% endif %}
+    </center>
+
+
+
+</body>
+</html>
